@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <!-- <div class="col-3"></div> -->
+    <div class="col-6">
+      <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()">
+        <div style="text-align: center" class="mb-5 mt-5">
+          <h2>
+            <b>{{ formHeading }}</b>
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="mb-3">
+              <label for="firstname" class="form-label"
+                >First Name <span style="color: red">*</span></label
+              >
+              <input
+                type="firstname"
+                class="form-control"
+                id="firstname"
+                [formControlName]="'firstname'"
+              />
+              <small
+                *ngIf="
+                  reactiveForm.get('firstname').touched &&
+                  reactiveForm.get('firstname').invalid
+                "
+                style="color: red"
+                >First Name is Required.</small
+              >
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="mb-3">
+              <label for="lastname" class="form-label">Second Name</label>
+              <input
+                type="lastname"
+                class="form-control"
+                id="lastname"
+                [formControlName]="'lastname'"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- <div class="mb-3">
+          <label for="username" class="form-label"
+            >Username <span style="color: red">*</span></label
+          >
+          <input
+            type="username"
+            class="form-control"
+            id="username"
+            formControlName="username"
+          />
+          <small
+            *ngIf="
+              reactiveForm.get('username').touched &&
+              reactiveForm.get('username').invalid
+            "
+            style="color: red"
+            >Invalid Password.</small
+          >
+        </div> -->
+        <div class="mb-3">
+          <label for="password" class="form-label"
+            >Password <span style="color: red">*</span></label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="password"
+          />
+          <small
+            *ngIf="
+              reactiveForm.get('password').touched &&
+              reactiveForm.get('password').invalid
+            "
+            style="color: red"
+            >Invalid Password.</small
+          >
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Check me out</label
+          >
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="reactiveForm.invalid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+    <!-- <div class="col-3"></div> -->
+  </div>
+</div>
