@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row justify-content-center">
-    <!-- <div class="col-3"></div> -->
     <div class="col-6">
+      <!-- Event Binding Example -->
       <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()">
         <div style="text-align: center" class="mb-5 mt-5">
           <h2>
+            <!-- String Interpolation Example -->
             <b>{{ formHeading }}</b>
           </h2>
         </div>
@@ -14,6 +15,7 @@
               <label for="firstname" class="form-label"
                 >First Name <span style="color: red">*</span></label
               >
+              <!-- Property Binding can be used with Input like this  -->
               <input
                 type="firstname"
                 class="form-control"
@@ -32,17 +34,22 @@
           </div>
           <div class="col-md-6 col-sm-12">
             <div class="mb-3">
-              <label for="lastname" class="form-label">Second Name</label>
+              <label for="lastname" class="form-label">Last Name</label>
               <input
                 type="lastname"
                 class="form-control"
                 id="lastname"
                 [formControlName]="'lastname'"
               />
+              <small
+                *ngIf="reactiveForm.get('lastname').touched"
+                style="color: green"
+                >Last Name is Optional.</small
+              >
             </div>
           </div>
         </div>
-        <!-- <div class="mb-3">
+        <div class="mb-3">
           <label for="username" class="form-label"
             >Username <span style="color: red">*</span></label
           >
@@ -51,6 +58,7 @@
             class="form-control"
             id="username"
             formControlName="username"
+            [(ngModel)]="credential.username"
           />
           <small
             *ngIf="
@@ -58,9 +66,10 @@
               reactiveForm.get('username').invalid
             "
             style="color: red"
-            >Invalid Password.</small
           >
-        </div> -->
+            Min Length - 3 && Max Length - 9</small
+          >
+        </div>
         <div class="mb-3">
           <label for="password" class="form-label"
             >Password <span style="color: red">*</span></label
@@ -70,6 +79,7 @@
             class="form-control"
             id="password"
             formControlName="password"
+            [(ngModel)]="credential.passowrd"
           />
           <small
             *ngIf="
@@ -77,15 +87,29 @@
               reactiveForm.get('password').invalid
             "
             style="color: red"
-            >Invalid Password.</small
+            >Min length - 6 && Max Length -15.</small
           >
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1"
-            >Check me out</label
+        <div class="mb-3">
+          <label for="email" class="form-label"
+            >Email <span style="color: red">*</span></label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+          />
+          <small
+            *ngIf="
+              reactiveForm.get('email').touched &&
+              reactiveForm.get('email').invalid
+            "
+            style="color: red"
+            >Invalid Email.</small
           >
         </div>
+        <!-- Property Binding Example -->
         <button
           type="submit"
           class="btn btn-primary"
@@ -95,6 +119,5 @@
         </button>
       </form>
     </div>
-    <!-- <div class="col-3"></div> -->
   </div>
 </div>
